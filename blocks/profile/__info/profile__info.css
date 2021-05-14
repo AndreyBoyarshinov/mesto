@@ -1,0 +1,5 @@
+.profile__info {
+    margin-top: 22.25px;
+    max-width: calc(100% - 38px);
+    text-align: center;
+}

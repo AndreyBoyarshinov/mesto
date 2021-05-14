@@ -1,0 +1,5 @@
+.element__image {
+  width: 100%;
+  object-fit: cover;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
