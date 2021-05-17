@@ -21,12 +21,12 @@
                      class="profile__avatar">
                 <div class="profile__info">
                     <div class="profile-info__container">
-                    <h1 class="profile__title">Владимир Шахрин</h1>
-                    <button class="edit-button" type="button" name="send"></button>
-                </div>
+                        <h1 class="profile__title">Владимир Шахрин</h1>
+                        <button class="profile__edit" type="button"></button>
+                    </div>
                     <p class="profile__subtitle">Советский и российский рок-музыкант</p>
                 </div>
-                <button class="add-button"></button>
+                <button class="profile__add"></button>
             </section>
 
             <section class="elements">
@@ -80,6 +80,22 @@
         <footer class="footer">
             <h3 class="footer__title">&copy; 2021 Mesto Russia Бояршинов Андрей</h3>
         </footer>
+
+        <section class="popup">
+            <div class="popup__container">
+                <h2 class="popup__header">Редактировать профиль</h2>
+                <form action="#" method="GET" class="popup__form" name="form_profile-info_popup">
+                    <input type="text" class="popup__field" id="popupTitle" name="popup__title">
+                    <input type="text" class="popup__field" id="popupSubtitle" name="popup__subtitle">
+                    <button type="submit" class="popup__save">Сохранить</button>
+                </form>
+                <button type="button" class="popup__close" id="popupClose"></button>
+            </div>
+        </section>
+
     </div>
 </div>
+
+<script src="./scripts/script.js"></script>
+
 </body>

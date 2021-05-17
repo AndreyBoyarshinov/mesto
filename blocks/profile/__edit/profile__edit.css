@@ -1,11 +1,11 @@
-.edit-button {
+.profile__edit {
   margin-left: 18px;
   width: 24px;
   height: 24px;
   box-sizing: border-box;
   border: 1px solid #FFFFFF;
   background-color: black;
-  background-image: url(../../images/pen.png);
+  background-image: url(../../../images/pen.png);
   background-size: 10px 10px;
   background-position: center;
   background-repeat: no-repeat;
@@ -15,6 +15,6 @@
   transition: opacity .1s ease-in;
 }
 
-.edit-button:hover {
+.profile__edit:hover {
   opacity: 0.8;
 }
