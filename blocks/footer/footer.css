@@ -7,10 +7,3 @@
     font-size: 18px;
     line-height: 22px;
 }
-
-@media screen and (max-width: 320px) {
-    .footer {
-        font-size: 14px;
-        line-height: 29px;
-    }
-}

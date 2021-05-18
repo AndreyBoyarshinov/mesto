@@ -2,3 +2,11 @@
     max-width: 142px;
     object-fit: contain;
 }
+
+@media (max-width: 320px) {
+    .header__logo {
+        margin-left: 8px;
+        height: 24.4px;
+        width: 103.74px;
+    }
+}
