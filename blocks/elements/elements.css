@@ -2,16 +2,17 @@
   display: grid;
   grid-template-rows: max-content;
   grid-template-columns: repeat(auto-fit, minmax(282px, 282px));
-  row-gap: 20px;
+  gap: 20px 17px;
   margin-top: 47.25px;
   max-width: 880px;
-  justify-content: space-between;
+  justify-content: center;
   padding-left: 0;
 }
 
 @media screen and (max-width: 320px) {
   .elements {
     max-width: 282px;
-    margin-top: 36px;
+    margin: 36px auto 0;
   }
 }
+
