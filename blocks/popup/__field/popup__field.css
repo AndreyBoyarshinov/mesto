@@ -11,9 +11,8 @@
   margin:auto;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 521px) {
   .popup__field {
     width: 238px;
-    line-height: 17px;
   }
 }
