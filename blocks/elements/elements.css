@@ -7,6 +7,7 @@
   max-width: 880px;
   justify-content: center;
   padding-left: 0;
+  list-style-type: none;
 }
 
 @media screen and (max-width: 320px) {

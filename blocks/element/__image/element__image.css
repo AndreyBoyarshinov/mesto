@@ -1,5 +1,9 @@
 .element__image {
   border-radius: 10px 10px 0 0;
-  width: 282px;
   height: 282px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  background-position:center;
 }
