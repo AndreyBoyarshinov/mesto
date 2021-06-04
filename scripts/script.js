@@ -41,6 +41,7 @@ const closePopupAddCard = popupAddCard.querySelector('.popup__close-button_type_
 const popupFormAddCard = popupAddCard.querySelector('.popup__form_type_add-card');
 const popupShowCard = document.querySelector('.popup_type_show-card');
 const closePopupShowCard = popupShowCard.querySelector('.popup__close-button_type_show-card');
+const elTemplate = document.querySelector('.element-template');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -96,7 +97,6 @@ function showImage(element){
 }
 
 function addElement(element){
-  const elTemplate = document.querySelector('.element-template');
   const elementNew = elTemplate.content.cloneNode(true);
   elementNew.querySelector('.element__image').setAttribute('style', 'background-image: url(' + element.link + ')');
   elementNew.querySelector('.element__title').textContent = element.name;
