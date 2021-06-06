@@ -27,16 +27,12 @@
   }
 }
 
-@media (min-width: 768px) {
-  .profile__add {
-    width: 150px;
-  }
-}
 
-@media (min-width: 1024px) {
+@media (min-width: 1199px) {
   .profile__add {
     margin-top: 0;
     margin-right: 0;
+    width: 150px;
   }
 }
 
