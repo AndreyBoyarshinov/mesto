@@ -71,7 +71,7 @@ function submitFormEditProfile(e) {
 
 function submitFormAddCard(e) {
   e.preventDefault();
-  addElement({
+  addNewElement({
     name: popupPlaceField.value,
     link: popupLinkField.value
   });
@@ -80,7 +80,7 @@ function submitFormAddCard(e) {
 
 function populateList(elements){
   elements.forEach(element => {
-    addElement(element);
+    addNewElement(element);
   });
 }
 
@@ -101,17 +101,24 @@ function showImage(element){
   
 const elTemplate = document.querySelector('.element-template');
 
-function addElement(element){
-  const elementNew = elTemplate.content.cloneNode(true);
-  console.log(element);
-  elementNew.querySelector('.element__image').setAttribute('style', 'background-image: url(' + element.link + ')');
-  elementNew.querySelector('.element__image').setAttribute('alt', 'background-image: url(' + element.link + ')');
-  elementNew.querySelector('.element__title').textContent = element.name;
-  elementNew.querySelector('.element__like-button').addEventListener('click', likeElement);
-  elementNew.querySelector('.element__delete-button').addEventListener('click', deleteElement);
-  elementNew.querySelector('.element__image').addEventListener('click', () => {
+function createNewElementByTemplate(element) {
+  const newElement = elTemplate.content.cloneNode(true);
+  const newElementImage = newElement.querySelector('.element__image');
+  newElementImage.setAttribute('style', 'background-image: url(' + element.link + ')');
+  newElementImage.setAttribute('alt', 'background-image: url(' + element.link + ')');
+  newElementImage.addEventListener('click', () => {
     showImage(element);
   });
+
+  newElement.querySelector('.element__title').textContent = element.name;
+  newElement.querySelector('.element__like-button').addEventListener('click', likeElement);
+  newElement.querySelector('.element__delete-button').addEventListener('click', deleteElement);
+  return newElement;
+}
+
+function addNewElement(element){
+  console.log(element);
+  const elementNew = createNewElementByTemplate(element);
   elementList.prepend(elementNew);
 }
 
