@@ -36,11 +36,14 @@ const popupUserStatus = popupEditProfile.querySelector('.popup__field_text_statu
 const popupFormProfile = popupEditProfile.querySelector('.popup__form_type_profile');
 const elementList = document.querySelector('.elements');
 const addCardBtn = document.querySelector('.profile__add');
-let popupAddCard = document.querySelector('.popup_type_add-card');
+const popupAddCard = document.querySelector('.popup_type_add-card');
 const closePopupAddCard = popupAddCard.querySelector('.popup__close-button_type_add-card');
 const popupFormAddCard = popupAddCard.querySelector('.popup__form_type_add-card');
-let popupShowCard = document.querySelector('.popup_type_show-card');
+const popupShowCard = document.querySelector('.popup_type_show-card');
 const closePopupShowCard = popupShowCard.querySelector('.popup__close-button_type_show-card');
+const popupPlaceField = popupAddCard.querySelector('.popup__field_text_place');
+const popupLinkField = popupAddCard.querySelector('.popup__field_text_link');
+const popupShowCardImage = popupShowCard.querySelector('.popup__image');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -66,13 +69,12 @@ function submitFormEditProfile(e) {
   closePopup(popupEditProfile);
 }
 
-
-
 function submitFormAddCard(e) {
-const popupPlaceName = popupAddCard.querySelector('.popup__field_text_place').value; /*эта переменная не может быть в глобальной видимости. Она работает после открытия попапа и ввода названия*/
-const popupPlaceLink = popupAddCard.querySelector('.popup__field_text_link').value; /*эта переменная не может быть в глобальной видимости. Она работает после открытия попапа и ввода ссылки*/
   e.preventDefault();
-  addElement({name: popupPlaceName, link: popupPlaceLink});
+  addElement({
+    name: popupPlaceField.value,
+    link: popupLinkField.value
+  });
   closePopup(popupAddCard);
 }
 
@@ -92,14 +94,14 @@ function deleteElement(e){
 
 function showImage(element){
   openPopup(popupShowCard);
-  popupShowCard.querySelector('.popup__image').setAttribute('src', element.link);
-  popupShowCard.querySelector('.popup__image').setAttribute('alt', element.name);
+  popupShowCardImage.setAttribute('src', element.link);
+  popupShowCardImage.setAttribute('alt', element.name);
   popupShowCard.querySelector('.popup__place-name').textContent = element.name;
 }
   
-let elTemplate = document.querySelector('.element-template');
+const elTemplate = document.querySelector('.element-template');
 
-function addElement(element){ /*https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_clonenode если верить этой документации, то скрипт написан верно, и функционирует корректно*/
+function addElement(element){
   const elementNew = elTemplate.content.cloneNode(true);
   console.log(element);
   elementNew.querySelector('.element__image').setAttribute('style', 'background-image: url(' + element.link + ')');
