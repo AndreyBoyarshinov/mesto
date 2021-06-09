@@ -164,3 +164,21 @@ popupShowCard.addEventListener('click', (e) => {
   if(e.currentTarget === e.target)
     closePopup(popupShowCard);
 });
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    closePopup(popupShowCard);
+  }
+});
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    closePopup(popupAddCard);
+  }
+});
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    closePopup(popupEditProfile);
+  }
+});
