@@ -39,16 +39,20 @@
 
     <div class="popup popup_type_edit-profile">
         <div class="popup__container">
-            <button class="popup__close-button popup__close-button_type_profile" type="button"
-                    aria-label="Закрыть окно"></button>
-            <form class="popup__form popup__form_type_profile" name="user-info-form">
+            <button class="popup__close-button popup__close-button_type_profile container__button" type="button" aria-label="Закрыть окно"></button>
+            <form class="popup__form popup__form_type_profile" name="user-info-form" novalidate>
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <fieldset class="popup__info">
-                    <input type="text" class="popup__field popup__field_text_name" name="user-name" placeholder="Имя"
-                           autocomplete="off" required>
-                    <input type="text" class="popup__field popup__field_text_status" name="user-status"
-                           placeholder="О себе"
-                           autocomplete="off" required>
+                    <label class="popup__field-label">
+                        <input type="text" class="popup__field popup__field_text_name" name="name" id="user-name" placeholder="Имя"
+                               autocomplete="off" required minlength="2" maxlength="40">
+                        <span class="popup__field-error user-name-error"></span>
+                    </label>
+                    <label class="popup__field-label">
+                        <input type="text" class="popup__field popup__field_text_status" name="status" id="user-status" placeholder="О себе"
+                               autocomplete="off" required minlength="2" maxlength="200">
+                        <span class="popup__field-error user-status-error"></span>
+                    </label>
                 </fieldset>
                 <button class="popup__button" type="submit" aria-label="Сохранить изменения">Сохранить</button>
             </form>
@@ -56,17 +60,20 @@
     </div>
     <div class="popup popup_type_add-card">
         <div class="popup__container">
-            <button class="popup__close-button popup__close-button_type_add-card" type="button"
-                    aria-label="Закрыть окно"></button>
-            <form class="popup__form popup__form_type_add-card" name="place-form">
+            <button class="popup__close-button popup__close-button_type_add-card container__button" type="button" aria-label="Закрыть окно"></button>
+            <form class="popup__form popup__form_type_add-card" name="place-form" novalidate>
                 <h2 class="popup__title">Новое место</h2>
                 <fieldset class="popup__info">
-                    <input type="text" class="popup__field popup__field_text_place" name="place-name"
-                           placeholder="Название"
-                           autocomplete="off" required>
-                    <input type="url" class="popup__field popup__field_text_link" name="place-link"
-                           placeholder="Ссылка на картинку"
-                           autocomplete="off" required>
+                    <label class="popup__field-label">
+                        <input type="text" class="popup__field popup__field_text_place" name="place" id="place-name" placeholder="Название"
+                               autocomplete="off" required minlength="2" maxlength="30">
+                        <span class="popup__field-error place-name-error"></span>
+                    </label>
+                    <label class="popup__field-label">
+                        <input type="url" class="popup__field popup__field_text_link" name="link" id="place-link" placeholder="Ссылка на картинку"
+                               autocomplete="off" required>
+                        <span class="popup__field-error place-link-error"></span>
+                    </label>
                 </fieldset>
                 <button class="popup__button" type="submit" aria-label="Создать новое место">Создать</button>
             </form>
@@ -74,9 +81,8 @@
     </div>
     <div class="popup popup_type_show-card">
         <div class="popup__image-container">
-            <button class="popup__close-button popup__close-button_type_show-card" type="button"
-                    aria-label="Закрыть окно"></button>
-            <img src="#" alt="Фото" class="popup__image">
+            <button class="popup__close-button popup__close-button_type_show-card container__button" type="button" aria-label="Закрыть окно"></button>
+            <img src="#" alt="Фотография" class="popup__image">
             <p class="popup__place-name"></p>
         </div>
     </div>
@@ -93,6 +99,7 @@
 </template>
 
 <script src="./scripts/script.js"></script>
+<script src="./scripts/validate.js"></script>
 
 </body>
 

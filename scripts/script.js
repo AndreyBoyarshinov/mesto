@@ -50,12 +50,32 @@ function openPopup(popup) {
 }
 
 function fillInProfileForm() {
+  resetValidationErrors(popupFormProfile);
   popupUserName.value = profileName.textContent;
   popupUserStatus.value = profileStatus.textContent;
 }
 
+function resetValidationErrors(form) {
+  const inputsList = Array.from(form.querySelectorAll('.popup__field'));
+  const errorsList = Array.from(form.querySelectorAll('.popup__field-error'));
+  const btnSubmit = form.querySelector('.popup__button');
+
+  inputsList.forEach((input) => {
+    input.classList.remove('popup__field_type_error');
+  });
+
+  errorsList.forEach((errMsg) => {
+    errMsg.textContent = '';
+    errMsg.classList.remove('popup__field-error_active');
+  });
+
+  btnSubmit.classList.add('popup__button_disabled');
+  btnSubmit.setAttribute('disabled', true);
+}
+
 function resetAddCardForm() {
   popupFormAddCard.reset();
+  resetValidationErrors(popupFormAddCard);
 }
 
 function closePopup(popup) {
