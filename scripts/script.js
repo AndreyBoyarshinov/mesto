@@ -1,29 +1,28 @@
-
 const initialCards = [
-  {
-    name: 'Дом Севастьянова',
-    link: 'https://top10.travel/wp-content/uploads/2017/06/dom-sevastyanova.jpg'
-  },
-  {
-    name: 'Театр оперы и балета',
-    link: 'https://top10.travel/wp-content/uploads/2017/06/teatr-opery-baleta.jpg'
-  },
-  {
-    name: 'Екатеринбургский цирк',
-    link: 'https://top10.travel/wp-content/uploads/2017/06/ekaterinburgskiy-tsirk.jpg'
-  },
-  {
-    name: 'Памятник клавиатуре',
-    link: 'https://top10.travel/wp-content/uploads/2017/06/pamyatnik-klaviature.jpg'
-  },
-  {
-    name: 'Памятник Татищеву и де Геннину',
-    link: 'https://top10.travel/wp-content/uploads/2017/06/pamyatnik-tatishhevu-genninu.jpg'
-  },
-  {
-    name: 'Здание Свердловского горсовета',
-    link: 'https://top10.travel/wp-content/uploads/2017/06/zdanie-sverdlovskogo-gorsoveta.jpg'
-  }
+    {
+        name: 'Дом Севастьянова',
+        link: 'https://top10.travel/wp-content/uploads/2017/06/dom-sevastyanova.jpg'
+    },
+    {
+        name: 'Театр оперы и балета',
+        link: 'https://top10.travel/wp-content/uploads/2017/06/teatr-opery-baleta.jpg'
+    },
+    {
+        name: 'Екатеринбургский цирк',
+        link: 'https://top10.travel/wp-content/uploads/2017/06/ekaterinburgskiy-tsirk.jpg'
+    },
+    {
+        name: 'Памятник клавиатуре',
+        link: 'https://top10.travel/wp-content/uploads/2017/06/pamyatnik-klaviature.jpg'
+    },
+    {
+        name: 'Памятник Татищеву и де Геннину',
+        link: 'https://top10.travel/wp-content/uploads/2017/06/pamyatnik-tatishhevu-genninu.jpg'
+    },
+    {
+        name: 'Здание Свердловского горсовета',
+        link: 'https://top10.travel/wp-content/uploads/2017/06/zdanie-sverdlovskogo-gorsoveta.jpg'
+    }
 ];
 
 const editProfileBtn = document.querySelector('.profile__edit');
@@ -46,149 +45,151 @@ const popupLinkField = popupAddCard.querySelector('.popup__field_text_link');
 const popupShowCardImage = popupShowCard.querySelector('.popup__image');
 
 function openPopup(popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeByEscape);
+    popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closeByEscape);
+}
+
+function closeByEscape(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened')
+        closePopup(openedPopup);
+    }
 }
 
 function fillInProfileForm() {
-  resetValidationErrors(popupFormProfile);
-  popupUserName.value = profileName.textContent;
-  popupUserStatus.value = profileStatus.textContent;
+    resetValidationErrors(popupFormProfile);
+    popupUserName.value = profileName.textContent;
+    popupUserStatus.value = profileStatus.textContent;
 }
 
 function resetValidationErrors(form) {
-  const inputsList = Array.from(form.querySelectorAll('.popup__field'));
-  const errorsList = Array.from(form.querySelectorAll('.popup__field-error'));
-  const btnSubmit = form.querySelector('.popup__button');
+    const inputsList = Array.from(form.querySelectorAll('.popup__field'));
+    const errorsList = Array.from(form.querySelectorAll('.popup__field-error'));
+    const btnSubmit = form.querySelector('.popup__button');
 
-  inputsList.forEach((input) => {
-    input.classList.remove('popup__field_type_error');
-  });
+    inputsList.forEach((input) => {
+        input.classList.remove('popup__field_type_error');
+    });
 
-  errorsList.forEach((errMsg) => {
-    errMsg.textContent = '';
-    errMsg.classList.remove('popup__field-error_active');
-  });
+    errorsList.forEach((errMsg) => {
+        errMsg.textContent = '';
+        errMsg.classList.remove('popup__field-error_active');
+    });
 
-  btnSubmit.classList.add('popup__button_disabled');
-  btnSubmit.setAttribute('disabled', true);
+    btnSubmit.classList.add('popup__button_disabled');
+    btnSubmit.setAttribute('disabled', true);
 }
 
 function resetAddCardForm() {
-  popupFormAddCard.reset();
-  resetValidationErrors(popupFormAddCard);
+    popupFormAddCard.reset();
+    resetValidationErrors(popupFormAddCard);
 }
 
 function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeByEscape);
+    popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeByEscape);
 }
 
 function submitFormEditProfile(e) {
-  e.preventDefault();
-  profileName.textContent = popupUserName.value;
-  profileStatus.textContent = popupUserStatus.value;
-  closePopup(popupEditProfile);
+    e.preventDefault();
+    profileName.textContent = popupUserName.value;
+    profileStatus.textContent = popupUserStatus.value;
+    closePopup(popupEditProfile);
 }
 
 function submitFormAddCard(e) {
-  e.preventDefault();
-  addNewElement({
-    name: popupPlaceField.value,
-    link: popupLinkField.value
-  });
-  closePopup(popupAddCard);
+    e.preventDefault();
+    addNewElement({
+        name: popupPlaceField.value,
+        link: popupLinkField.value
+    });
+    closePopup(popupAddCard);
 }
 
-function populateList(elements){
-  elements.forEach(element => {
-    addNewElement(element);
-  });
+function populateList(elements) {
+    elements.forEach(element => {
+        addNewElement(element);
+    });
 }
 
-function likeElement(e){
-  e.target.classList.toggle('element__like-button_active');
+function likeElement(e) {
+    e.target.classList.toggle('element__like-button_active');
 }
 
-function deleteElement(e){
-  e.target.closest('.element').remove();
+function deleteElement(e) {
+    e.target.closest('.element').remove();
 }
 
-function showImage(element){
-  openPopup(popupShowCard);
-  popupShowCardImage.setAttribute('src', element.link);
-  popupShowCardImage.setAttribute('alt', element.name);
-  popupShowCard.querySelector('.popup__place-name').textContent = element.name;
+function showImage(element) {
+    openPopup(popupShowCard);
+    popupShowCardImage.setAttribute('src', element.link);
+    popupShowCardImage.setAttribute('alt', element.name);
+    popupShowCard.querySelector('.popup__place-name').textContent = element.name;
 }
-  
+
 const elTemplate = document.querySelector('.element-template');
 
 function createNewElementByTemplate(element) {
-  const newElement = elTemplate.content.cloneNode(true);
-  const newElementImage = newElement.querySelector('.element__image');
-  newElementImage.setAttribute('style', 'background-image: url(' + element.link + ')');
-  newElementImage.addEventListener('click', () => {
-    showImage(element);
-  });
+    const newElement = elTemplate.content.cloneNode(true);
+    const newElementImage = newElement.querySelector('.element__image');
+    newElementImage.setAttribute('style', 'background-image: url(' + element.link + ')');
+    newElementImage.addEventListener('click', () => {
+        showImage(element);
+    });
 
-  newElement.querySelector('.element__title').textContent = element.name;
-  newElement.querySelector('.element__like-button').addEventListener('click', likeElement);
-  newElement.querySelector('.element__delete-button').addEventListener('click', deleteElement);
-  return newElement;
+    newElement.querySelector('.element__title').textContent = element.name;
+    newElement.querySelector('.element__like-button').addEventListener('click', likeElement);
+    newElement.querySelector('.element__delete-button').addEventListener('click', deleteElement);
+    return newElement;
 }
 
-function addNewElement(element){
-  console.log(element);
-  const elementNew = createNewElementByTemplate(element);
-  elementList.prepend(elementNew);
+function addNewElement(element) {
+    console.log(element);
+    const elementNew = createNewElementByTemplate(element);
+    elementList.prepend(elementNew);
 }
 
 populateList(initialCards);
 
 editProfileBtn.addEventListener('click', () => {
-  fillInProfileForm();
-  openPopup(popupEditProfile);
+    fillInProfileForm();
+    openPopup(popupEditProfile);
 });
 
 closePopupEditProfile.addEventListener('click', () => {
-  closePopup(popupEditProfile);
+    closePopup(popupEditProfile);
 });
 
 popupEditProfile.addEventListener('click', (e) => {
-  if(e.currentTarget === e.target)
-    closePopup(popupEditProfile);
+    if (e.currentTarget === e.target)
+        closePopup(popupEditProfile);
 });
 
 popupFormProfile.addEventListener('submit', submitFormEditProfile);
 
 addCardBtn.addEventListener('click', () => {
-  resetAddCardForm();
-  openPopup(popupAddCard);
+    resetAddCardForm();
+    openPopup(popupAddCard);
 });
 
 closePopupAddCard.addEventListener('click', () => {
-  closePopup(popupAddCard);
+    closePopup(popupAddCard);
 });
 
 popupAddCard.addEventListener('click', (e) => {
-  if(e.currentTarget === e.target)
-    closePopup(popupAddCard);
+    if (e.currentTarget === e.target)
+        closePopup(popupAddCard);
 });
 
 popupFormAddCard.addEventListener('submit', submitFormAddCard);
 
 closePopupShowCard.addEventListener('click', () => {
-  closePopup(popupShowCard);
-});
-
-popupShowCard.addEventListener('click', (e) => {
-  if(e.currentTarget === e.target)
     closePopup(popupShowCard);
 });
 
-function closeByEscape(evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened')
-    closePopup(openedPopup);
-  }
-}
+popupShowCard.addEventListener('click', (e) => {
+    if (e.currentTarget === e.target)
+        closePopup(popupShowCard);
+});
+
+
