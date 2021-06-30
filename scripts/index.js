@@ -47,7 +47,7 @@ export const popupShowCard = document.querySelector('.popup_type_show-card');
 const closePopupShowCard = popupShowCard.querySelector('.popup__close-button_type_show-card');
 export const popupImage = popupShowCard.querySelector('.popup__image');
 export const popupImageName = popupShowCard.querySelector('.popup__place-name');
-const cardsContainer = document.querySelector('.elements__list');
+
 
 
 export function openPopup(popup) {
@@ -55,7 +55,7 @@ export function openPopup(popup) {
     document.addEventListener('keydown', closeByEscape);
 }
 
-export function closeByEscape(evt) {
+function closeByEscape(evt) {
     if (evt.key === 'Escape') {
         const openedPopup = document.querySelector('.popup_opened')
         closePopup(openedPopup);
@@ -117,14 +117,6 @@ function populateList(elements) {
         addElement(elementList, cardElement.generateCard());
     });
 }
-
-function likeElement(e) {
-    if (e.target.classList.contains('element__like-button')) {
-        e.target.classList.toggle('element__like-button_active');
-    }
-}
-
-cardsContainer.addEventListener('click', likeElement);
 
 function addElement(container, element) {
     container.prepend(element);

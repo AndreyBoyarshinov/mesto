@@ -39,7 +39,16 @@ class Card {
             .addEventListener('click', () => {
                 this._showImage();
             });
+        this._element
+            .querySelector('.element__like-button')
+            .addEventListener('click', () => {
+            this._likeElement();
+        });
     }
+    _likeElement = () => {
+        event.target.classList.toggle('element__like-button_active');
+    }
+
 
     generateCard() {
         this._element = this._getTemplate();
