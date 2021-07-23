@@ -1,11 +1,12 @@
-import Section from './components/Section.js';
-import PopupWithImage from './components/PopupWithImage.js';
-import PopupWithForm from './components/PopupWithForm.js';
-import Card from './components/Card.js';
-import FormValidator from './components/FormValidator.js';
-import UserInfo from './components/UserInfo.js';
-import { initialCards, selectorNames }  from './utils.js';
-import '../pages/index.css';
+import Section from '../scripts/components/Section.js';
+import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import Card from '../scripts/components/Card.js';
+import FormValidator from '../scripts/components/FormValidator.js';
+import UserInfo from '../scripts/components/UserInfo.js';
+import { selectorNames }  from '../utils/utils.js';
+import { initialCards }  from '../utils/constants.js';
+import './index.css';
 
 const editProfileBtn = document.querySelector('.profile__edit');
 const addCardBtn = document.querySelector('.profile__add');
@@ -16,28 +17,24 @@ const userInfo = new UserInfo({nameSelector: '.profile__title', statusSelector: 
 const popupWithImage = new PopupWithImage('.popup_type_show-card');
 popupWithImage.setEventListeners('.popup__close-button_type_show-card');
 
+function createCard(data) {
+    const card = new Card(data, '.element-template', '.element', (context) => {
+        popupWithImage.openPopup(context);
+    });
+
+    const cardElement = card.generateCard();
+    cardsList.addItem(cardElement);
+}
+
 const cardsList = new Section({
     items: initialCards,
-    renderer: (item) => {
-        const card = new Card(item, '.element-template', '.element', (item) => {
-            popupWithImage.openPopup(item);
-        });
-
-        const cardElement = card.generateCard();
-        cardsList.addItem(cardElement);
-    },
+    renderer: createCard,
     containerSelector: '.elements__list'
 });
 
 const popupAddCard = new PopupWithForm({
     handleSubmit: (inputValues) => {
-        const card = new Card(inputValues, '.element-template', '.element', (inputValues) => {
-            popupWithImage.openPopup(inputValues);
-        });
-
-        const cardElement = card.generateCard();
-        cardsList.addItem(cardElement);
-
+        createCard(inputValues);
         popupAddCard.closePopup();
     },
     handleReset: () => {

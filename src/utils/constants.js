@@ -24,12 +24,3 @@ export const initialCards = [
         link: 'https://top10.travel/wp-content/uploads/2017/06/zdanie-sverdlovskogo-gorsoveta.jpg'
     }
 ];
-
-export const selectorNames = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__field',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__field_type_error',
-    errorClass: 'popup__field-error_active'
-}
