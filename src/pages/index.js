@@ -21,13 +21,14 @@ function createCard(data) {
     const card = new Card(data, '.element-template', '.element', (context) => {
         popupWithImage.openPopup(context);
     });
-
     return card.generateCard();
 }
 
 const cardsList = new Section({
     items: initialCards,
-    renderer: createCard,
+    renderer: (inputValues) => {
+        cardsList.addItem(createCard(inputValues));
+    },
     containerSelector: '.elements__list'
 });
 
