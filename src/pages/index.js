@@ -22,8 +22,7 @@ function createCard(data) {
         popupWithImage.openPopup(context);
     });
 
-    const cardElement = card.generateCard();
-    cardsList.addItem(cardElement);
+    return card.generateCard();
 }
 
 const cardsList = new Section({
@@ -34,7 +33,8 @@ const cardsList = new Section({
 
 const popupAddCard = new PopupWithForm({
     handleSubmit: (inputValues) => {
-        createCard(inputValues);
+        const cardElement = createCard(inputValues);
+        cardsList.addItem(cardElement);
         popupAddCard.closePopup();
     },
     handleReset: () => {
