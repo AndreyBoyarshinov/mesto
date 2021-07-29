@@ -1,9 +1,16 @@
 .profile__info {
-    margin: 22.25px 0 0;
+    max-width: 550px;
+    display: grid;
+    grid-template-columns:  1fr;
+    grid-template-rows: repeat(2, min-content);
+    row-gap: 16px;
+    column-gap: 18px;
 }
 
-@media (min-width: 1199px) {
+@media screen and (max-width: 900px) {
     .profile__info {
-        margin: 0 0 0 30px;
+        max-width: 250px;
+        margin-bottom: 36px;
+        column-gap: 10px;
     }
 }

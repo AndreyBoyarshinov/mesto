@@ -26,7 +26,7 @@ export default class FormValidator {
 
     _isValid = (inputElement) => {
         if (!inputElement.validity.valid) {
-            this. _showInputError(inputElement, inputElement.validationMessage);
+            this._showInputError(inputElement, inputElement.validationMessage);
         } else {
             this._hideInputError(inputElement);
         }
