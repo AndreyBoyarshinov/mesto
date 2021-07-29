@@ -1,7 +1,7 @@
 .popup__info {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, min-content);
+    grid-template-rows: repeat(1, min-content);
     row-gap: 30px;
     border: 0;
     padding: 0;
